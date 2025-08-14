@@ -1,0 +1,154 @@
+.footer {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 60px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* Centered logo and p tag at the top */
+.footer-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-logo img {
+  width: 60px;
+  height: auto;
+}
+
+.footer-logo p {
+  color: #383838;
+  font-size: 46px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Properly centered nav links */
+.footer-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  color: #252525;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.footer-links li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-links li:hover {
+  color: #007bff;
+}
+
+/* Centered social icons */
+.footer-social-icons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-icons-container {
+  padding: 10px;
+  background: #fbfbfb;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.footer-icons-container:hover {
+  transform: scale(1.1);
+}
+
+/* Copyright */
+.footer-copyright {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: #1a1a1a;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.footer-copyright hr {
+  width: 80%;
+  height: 2px;
+  background: #c7c7c7;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .footer{
+    gap: 20px;
+  }
+  .footer-logo{
+    gap: 10px;
+    align-items: end;
+  }
+  .footer-logo img{
+    width: 40px;
+  }
+  .footer-logo p{
+    font-size: 25px;
+  }
+  .footer-links{
+    font-size: 40px;
+    gap: 10px;
+  }
+  .footer-social-icons img{
+    width: 22px;
+  }
+  .footer-copyright{
+    font-size: 13px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .footer{
+    gap: 16px;
+  }
+  .footer-logo{
+    gap: 8px;
+    align-items: end;
+  }
+  .footer-logo img{
+    width: 40px;
+  }
+  .footer-logo p{
+    font-size: 22px;
+  }
+  .footer-links{
+    font-size: 22px;
+    gap: 8px;
+  }
+  .footer-social-icons img{
+    width: 20px;
+  }
+  .footer-copyright{
+    font-size: 11px;
+  }
+}

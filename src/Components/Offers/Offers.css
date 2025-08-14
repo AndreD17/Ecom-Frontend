@@ -1,0 +1,233 @@
+/* ================================
+   OFFERS SECTION - BASE STYLES
+   ================================ */
+
+.offers {
+  width: 100%;
+  max-width: 1100px;
+  margin: 160px auto 150px auto;
+  padding: 60px;
+  display: flex;
+  gap: 40px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.offers-left {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.offers-left h1 {
+  color: #171717;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  text-align: left;
+}
+
+.offers-left p {
+  color: #171717;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.offers-left button {
+  width: fit-content;
+  padding: 18px 40px;
+  border-radius: 35px;
+  background: #ff4141;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.offers-left button:hover {
+  background: #e93e3e;
+  transform: translateY(-2px);
+}
+
+.offers-right {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.offers-right img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  display: block;
+}
+
+/* ================================
+   RESPONSIVE BREAKPOINTS
+   ================================ */
+
+/* Large screens - 1280px and below */
+@media (max-width: 1280px) {
+  .offers {
+    padding: 40px;
+    margin: 140px auto 120px auto;
+    gap: 30px;
+  }
+
+  .offers-left h1 {
+    font-size: 2.5rem;
+  }
+
+  .offers-left p {
+    font-size: 1.125rem;
+  }
+
+  .offers-left button {
+    padding: 16px 36px;
+    font-size: 1rem;
+  }
+
+  .offers-right img {
+    max-width: 300px;
+  }
+}
+
+/* Medium screens - 1024px and below */
+@media (max-width: 1024px) {
+  .offers {
+    padding: 30px;
+    margin: 120px auto 100px auto;
+    gap: 25px;
+  }
+
+  .offers-left h1 {
+    font-size: 2rem;
+  }
+
+  .offers-left p {
+    font-size: 1rem;
+  }
+
+  .offers-left button {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  .offers-right img {
+    max-width: 220px;
+  }
+}
+
+/* Small screens - 800px and below */
+@media (max-width: 800px) {
+  .offers {
+    flex-direction: column;
+    padding: 20px;
+    margin: 100px auto 80px auto;
+    gap: 20px;
+    align-items: center;
+    height: auto;
+  }
+
+  .offers-right {
+    display: none;
+  }
+
+  .offers-left {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    gap: 16px;
+  }
+
+  .offers-left h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .offers-left p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .offers-left button {
+    padding: 12px 28px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+}
+
+
+/* Small screens - 500px and below */
+@media (max-width: 500px) {
+  .offers {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+  }
+
+  .offers-right {
+    display: none;
+  }
+
+  .offers-left {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .offers-left h1 {
+    font-size: clamp(1rem, 5vw, 1.4rem);
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+  }
+
+  .offers-left p {
+    font-size: clamp(0.7rem, 4vw, 1rem);
+    margin: 0;
+    text-align: center;
+  }
+
+  .offers-left button {
+    padding: 8px 16px;
+    font-size: clamp(0.65rem, 3.5vw, 0.85rem);
+    margin-top: 8px;
+    width: auto;
+    max-width: 90%;
+    box-sizing: border-box;
+  }
+}

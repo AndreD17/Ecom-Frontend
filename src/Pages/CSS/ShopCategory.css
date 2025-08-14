@@ -1,0 +1,112 @@
+.shopcategory-banner {
+  display: block;
+  margin: 30px auto;
+  width: 80%;
+}
+
+.shopcategory-indexSort {
+  display: flex;
+  margin: 0px 170px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopcategory-sort {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid #888;
+}
+
+.shopcategory-indexSort p span {
+  font-weight: 600;
+}
+
+.shopcategory-products {
+  margin: 20px 170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px 20px;
+}
+
+.shopCategory-loadmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px auto; 
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 225px;
+  height: 50px;
+  border-radius: 70px;
+  background: #ededed;
+  color: #787878;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.shopCategory-loadmore:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+.shopcategory-loadmore-wrapper {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+   margin-top: 50px;
+   margin-bottom: 50px; 
+}
+@media (max-width: 1280px) {
+    .shopcategory-banner{
+      margin: 20px auto;
+      width: 90%;
+    }
+    .shopcategory-indexSort{
+      width: 90%;
+      margin: auto;
+    }
+    .shopcategory-sort{
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+    .shopcategory-indexSort p{
+      font-size: 12px;
+    }
+    .shopcategory-products{
+      width: 90%;
+      margin: 10px auto;
+      row-gap: 40px;
+    }
+    .shopcategory-products .item{
+      margin: auto;
+    }
+    .shopCategory-loadmore {
+      margin: 100px auto;
+      width: 200px;
+      height: 60px;
+      font-size: 16px;
+    }
+}
+@media (max-width: 800px) {
+  .shopcategory-banner{
+    width: 95%;
+  }
+  .shopcategory-products{
+    width: 95%;
+  }
+  .shopCategory-loadmore{
+    margin: 60px auto;
+    width: 150px;
+    height: 40px;
+    font-size: 13px;
+  }
+  
+}
+@media (max-width: 500px) {
+     .shopcategory-banner{
+      width: 90%;
+     }
+    .shopcategory-products{
+      grid-template-columns: 1fr 1fr;
+     }
+}
