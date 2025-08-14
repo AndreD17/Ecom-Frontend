@@ -2,6 +2,9 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ShopContext = createContext(null);
 
+// ✅ Get API base URL from .env
+const API_URL = process.env.REACT_APP_API_URL;
+
 const getDefaultCart = () => {
   let cart = {};
   for (let index = 0; index <= 300; index++) {
@@ -15,43 +18,40 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-  // 1️⃣ Fetch all products
-  fetch("https://ecom-backend-oecv.onrender.com/allproducts")
-    .then((response) => response.json())
-    .then((data) => setAll_Product(data))
-    .catch((err) => console.error("Error fetching products:", err));
-
-  // 2️⃣ Fetch cart if logged in
-  if (localStorage.getItem("auth-token")) {
-    fetch("https://ecom-backend-oecv.onrender.com/getcart", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "auth-token": localStorage.getItem("auth-token"),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({}),
-    })
+    // 1️⃣ Fetch all products
+    fetch(`${API_URL}/allproducts`)
       .then((response) => response.json())
-      .then((data) => {
-        console.log("Cart data from backend:", data);
-        // Ensure IDs are numbers
-        const normalizedCart = {};
-        for (const key in data) {
-          normalizedCart[Number(key)] = data[key];
-        }
-        setCartItems(normalizedCart);
+      .then((data) => setAll_Product(data))
+      .catch((err) => console.error("Error fetching products:", err));
+
+    // 2️⃣ Fetch cart if logged in
+    if (localStorage.getItem("auth-token")) {
+      fetch(`${API_URL}/getcart`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "auth-token": localStorage.getItem("auth-token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
       })
-      .catch((error) =>
-        console.error("Error fetching cart data:", error)
-      );
-  }
-}, []);
-
-
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Cart data from backend:", data);
+          const normalizedCart = {};
+          for (const key in data) {
+            normalizedCart[Number(key)] = data[key];
+          }
+          setCartItems(normalizedCart);
+        })
+        .catch((error) =>
+          console.error("Error fetching cart data:", error)
+        );
+    }
+  }, []);
 
   const addToCart = (itemId) => {
-    const numericId = Number(itemId); // ensure number
+    const numericId = Number(itemId);
 
     setCartItems((prev) => ({
       ...prev,
@@ -59,10 +59,10 @@ const ShopContextProvider = (props) => {
     }));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("https://ecom-backend-oecv.onrender.com/addtocart", {
+      fetch(`${API_URL}/addtocart`, {
         method: "POST",
         headers: {
-          Accept: "application/form-data",
+          Accept: "application/json",
           "auth-token": localStorage.getItem("auth-token"),
           "Content-Type": "application/json",
         },
@@ -76,33 +76,30 @@ const ShopContextProvider = (props) => {
     }
   };
 
-
-
   const removeFromCart = (itemId) => {
-  const numericId = Number(itemId);
-  setCartItems((prev) => ({
-    ...prev,
-    [numericId]: Math.max((prev[numericId] || 1) - 1, 0),
-  }));
+    const numericId = Number(itemId);
+    setCartItems((prev) => ({
+      ...prev,
+      [numericId]: Math.max((prev[numericId] || 1) - 1, 0),
+    }));
 
-  if (localStorage.getItem("auth-token")) {
-    fetch("https://ecom-backend-oecv.onrender.com/removefromcart", { // new endpoint
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "auth-token": localStorage.getItem("auth-token"),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ itemId: numericId }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log("Remove from cart response:", data))
-      .catch((error) =>
-        console.error("Error removing from cart:", error)
-      );
-  }
-};
-
+    if (localStorage.getItem("auth-token")) {
+      fetch(`${API_URL}/removefromcart`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "auth-token": localStorage.getItem("auth-token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ itemId: numericId }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log("Remove from cart response:", data))
+        .catch((error) =>
+          console.error("Error removing from cart:", error)
+        );
+    }
+  };
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;

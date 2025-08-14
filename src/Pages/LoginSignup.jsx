@@ -1,58 +1,64 @@
 import React, { useState } from "react";
-import  './CSS/LoginSignup.css'
+import './CSS/LoginSignup.css';
+
+const API_URL = process.env.REACT_APP_API_URL; // ✅ Use env variable
 
 const LoginSignup = () => {
+  const [state, setState] = useState("Login");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: ""
+  });
 
-    const [state, setState] = useState("Login");
-    const [formData, setFormData] = useState({
-        username:"",
-        password:"",
-        email:""
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const login = async () => {
+    console.log("Login Function Executed", formData);
+    let responseData;
+    await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
 
-    const changeHandler = (e) =>{
-        setFormData({...formData, [e.target.name]:e.target.value})
+    if (responseData.success) {
+      localStorage.setItem("auth-token", responseData.token);
+      window.location.replace("/");
+    } else {
+      alert(responseData.errors);
     }
+  };
 
+  const signup = async () => {
+    console.log("Signup Function Executed", formData);
+    let responseData;
+    await fetch(`${API_URL}/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
 
-    const login = async (params) => {
-        console.log("Login Function Executed", formData);
-        let responseData;
-        await fetch('https://ecom-backend-oecv.onrender.com/login', {
-            method: 'POST',
-            headers:{
-                Accept:'application/formData',
-                'Content-Type':'application/json',
-            },
-            body: JSON.stringify(formData),
-        }).then((response)=> response.json()).then((data)=>responseData=data)
-        if (responseData.success) {
-            localStorage.setItem('auth-token', responseData.token);
-            window.location.replace("/");
-        }else{
-            alert(responseData.errors)
-        }         
+    if (responseData.success) {
+      localStorage.setItem("auth-token", responseData.token);
+      window.location.replace("/");
+    } else {
+      alert(responseData.errors);
     }
+  };
 
-    const signup = async (params) => {
-        console.log("Signup Function Executed", formData);
-        let responseData;
-        await fetch('https://ecom-backend-oecv.onrender.com/signup', {
-            method: 'POST',
-            headers:{
-                Accept:'application/formData',
-                'Content-Type':'application/json',
-            },
-            body: JSON.stringify(formData),
-        }).then((response)=> response.json()).then((data)=>responseData=data)
-        if (responseData.success) {
-            localStorage.setItem('auth-token', responseData.token);
-            window.location.replace("/");
-        }else{
-            alert(responseData.errors)
-        }
-        
-    }
 
 
     return (

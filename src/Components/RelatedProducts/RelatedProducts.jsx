@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./RelatedProducts.css";
 import Item from "../Item/Item";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const RelatedProducts = ({ category, excludeId }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/allproducts")
+    fetch(`${API_URL}/allproducts`)
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter(

@@ -5,13 +5,15 @@ import ProductDisplay from "../Components/ProductDisplay/ProductDisplay";
 import DescriptionBox from "../Components/DescriptionBox/DescriptionBox";
 import RelatedProducts from "../Components/RelatedProducts/RelatedProducts";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Product = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://ecom-backend-oecv.onrender.com/allproducts")
+    fetch(`${API_URL}/allproducts`)
       .then((res) => res.json())
       .then((data) => {
         const foundProduct = data.find(

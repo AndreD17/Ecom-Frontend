@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import './Popular.css';
 import Item from "../Item/Item.jsx";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 const Popular = () => {
     const [popularProducts, setPopularProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://ecom-backend-oecv.onrender.com/popularinwomen')
+        fetch(`${API_URL}/popularinwomen`)
             .then(response => response.json())
             .then(data => setPopularProducts(data))
             .catch(error => console.error("Fetch error:", error));
