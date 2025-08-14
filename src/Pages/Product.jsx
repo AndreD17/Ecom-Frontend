@@ -11,7 +11,7 @@ const Product = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/allproducts")
+    fetch("https://ecom-backend-oecv.onrender.com/allproducts")
       .then((res) => res.json())
       .then((data) => {
         const foundProduct = data.find(

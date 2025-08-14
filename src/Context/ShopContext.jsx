@@ -16,14 +16,14 @@ const ShopContextProvider = (props) => {
 
   useEffect(() => {
   // 1️⃣ Fetch all products
-  fetch("http://localhost:4000/allproducts")
+  fetch("https://ecom-backend-oecv.onrender.com/allproducts")
     .then((response) => response.json())
     .then((data) => setAll_Product(data))
     .catch((err) => console.error("Error fetching products:", err));
 
   // 2️⃣ Fetch cart if logged in
   if (localStorage.getItem("auth-token")) {
-    fetch("http://localhost:4000/getcart", {
+    fetch("https://ecom-backend-oecv.onrender.com/getcart", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -59,7 +59,7 @@ const ShopContextProvider = (props) => {
     }));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/addtocart", {
+      fetch("https://ecom-backend-oecv.onrender.com/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -86,7 +86,7 @@ const ShopContextProvider = (props) => {
   }));
 
   if (localStorage.getItem("auth-token")) {
-    fetch("http://localhost:4000/removefromcart", { // new endpoint
+    fetch("https://ecom-backend-oecv.onrender.com/removefromcart", { // new endpoint
       method: "POST",
       headers: {
         Accept: "application/json",
