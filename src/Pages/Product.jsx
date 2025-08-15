@@ -6,6 +6,8 @@ import DescriptionBox from "../Components/DescriptionBox/DescriptionBox";
 import RelatedProducts from "../Components/RelatedProducts/RelatedProducts";
 
 const API_URL = process.env.REACT_APP_API_URL;
+console.log("API_URL from env:", API_URL);
+
 
 const Product = () => {
   const { productId } = useParams();
