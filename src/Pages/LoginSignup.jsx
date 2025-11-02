@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import './CSS/LoginSignup.css';
 
-const API_URL = process.env.REACT_APP_API_URL; // ✅ Use env variable
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://ecom-backend-oecv.onrender.com");
+ // ✅ Use env variable
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");

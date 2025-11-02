@@ -5,8 +5,15 @@ import ProductDisplay from "../Components/ProductDisplay/ProductDisplay";
 import DescriptionBox from "../Components/DescriptionBox/DescriptionBox";
 import RelatedProducts from "../Components/RelatedProducts/RelatedProducts";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://ecom-backend-oecv.onrender.com"
+  );
+
 console.log("API_URL from env:", API_URL);
+
 
 
 const Product = () => {

@@ -3,7 +3,12 @@ import React, { createContext, useEffect, useState } from "react";
 export const ShopContext = createContext(null);
 
 // ✅ Get API base URL from .env
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://ecom-backend-oecv.onrender.com");
+
 
 const getDefaultCart = () => {
   let cart = {};
